@@ -217,7 +217,7 @@ def detect_emojis(text):
 if __name__ == "__main__":
     print("\n" + "="*60)
     print("BOT DETECTION SYSTEM - TRAINING PIPELINE")
-    print("="*60)
+    
     
     print("\nLoading datasets...")
     datasets = {}
@@ -237,7 +237,7 @@ if __name__ == "__main__":
     
     print("\n" + "="*60)
     print("FEATURE EXTRACTION")
-    print("="*60)
+    
     
     extractor = BotFeatureExtractor()
     features = {}
@@ -257,7 +257,7 @@ if __name__ == "__main__":
     
     print("\n" + "="*60)
     print("ENGLISH MODEL")
-    print("="*60)
+    
     
     detector_en = BotDetector()
     detector_en.train(english_features)
@@ -267,7 +267,7 @@ if __name__ == "__main__":
     
     print("\n" + "="*60)
     print("FRENCH MODEL")
-    print("="*60)
+    
     
     detector_fr = BotDetector()
     detector_fr.train(french_features)
@@ -277,6 +277,6 @@ if __name__ == "__main__":
     
     print("\n" + "="*60)
     print("SUMMARY")
-    print("="*60)
+    
     print(f"\nEnglish: {score_en}/516 points, CV: {np.mean([s[0]/s[1] for s in cv_en])*100:.1f}%")
     print(f"French: {score_fr}/220 points, CV: {np.mean([s[0]/s[1] for s in cv_fr])*100:.1f}%")

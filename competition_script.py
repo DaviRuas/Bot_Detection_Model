@@ -78,9 +78,9 @@ def detect_emojis(text):
 
 def train_models():
     """Train final models on all practice data"""
-    print("="*60)
+    
     print("TRAINING FINAL MODELS")
-    print("="*60)
+    
     
     print("\nLoading practice datasets...")
     datasets = {}
