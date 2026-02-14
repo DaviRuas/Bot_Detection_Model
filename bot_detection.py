@@ -127,9 +127,7 @@ class BotDetector:
         predictions, _ = self.predict(features_df, threshold)
         y_true = features_df['is_bot']
         
-        print(f"\n{'='*60}")
         print(f"EVALUATION (threshold={threshold:.2f})")
-        print(f"{'='*60}")
         
         print("\n" + classification_report(y_true, predictions, target_names=['Human', 'Bot']))
         
@@ -178,9 +176,7 @@ def cross_validate(features_df, n_splits=5):
     
     skf = StratifiedKFold(n_splits=n_splits, shuffle=True, random_state=42)
     
-    print(f"\n{'='*60}")
     print(f"K-FOLD CROSS-VALIDATION (k={n_splits})")
-    print(f"{'='*60}")
     
     scores = []
     for fold, (train_idx, test_idx) in enumerate(skf.split(X, y)):
@@ -215,7 +211,6 @@ def detect_emojis(text):
 
 
 if __name__ == "__main__":
-    print("\n" + "="*60)
     print("BOT DETECTION SYSTEM - TRAINING PIPELINE")
     
     
@@ -235,7 +230,6 @@ if __name__ == "__main__":
         lang = "EN" if dataset_id in [30, 32] else "FR"
         print(f"  Dataset {dataset_id} ({lang}): {len(datasets[dataset_id]['users'])} users, {len(bot_ids)} bots")
     
-    print("\n" + "="*60)
     print("FEATURE EXTRACTION")
     
     
@@ -255,7 +249,6 @@ if __name__ == "__main__":
     print(f"\nEnglish: {len(english_features)} users ({sum(english_features['is_bot'])} bots)")
     print(f"French: {len(french_features)} users ({sum(french_features['is_bot'])} bots)")
     
-    print("\n" + "="*60)
     print("ENGLISH MODEL")
     
     
@@ -265,7 +258,6 @@ if __name__ == "__main__":
     score_en = detector_en.evaluate(english_features, threshold=threshold_en)
     cv_en = cross_validate(english_features)
     
-    print("\n" + "="*60)
     print("FRENCH MODEL")
     
     
@@ -275,7 +267,6 @@ if __name__ == "__main__":
     score_fr = detector_fr.evaluate(french_features, threshold=threshold_fr)
     cv_fr = cross_validate(french_features)
     
-    print("\n" + "="*60)
     print("SUMMARY")
     
     print(f"\nEnglish: {score_en}/516 points, CV: {np.mean([s[0]/s[1] for s in cv_en])*100:.1f}%")

@@ -145,9 +145,7 @@ def train_models():
 
 def predict(eval_file, lang, team_name):
     """Generate predictions for evaluation data"""
-    print(f"\n{'='*60}")
     print(f"PREDICTING {lang.upper()} DATA")
-    print(f"{'='*60}")
     
     print(f"\nLoading {eval_file}...")
     with open(eval_file, 'r', encoding='utf-8') as f:
