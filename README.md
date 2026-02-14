@@ -33,7 +33,7 @@ python -m textblob.download_corpora
 
 ### Training (for pre-competition)
 
-Train models on all practice data:
+Train models on all practice data; note that all practice datasets must (.txt and .json) must be in the current working directory:
 ```bash
 python competition_script.py train
 ```
@@ -102,8 +102,8 @@ The system extracts 17 behavioral features per user:
 - Class weight: balanced
 
 **Threshold Optimization:**
-- English: 0.4 (maximizes competition score)
-- French: 0.55 (higher threshold for precision)
+- English: 0.4 
+- French: 0.55 
 
 ## Files
 
